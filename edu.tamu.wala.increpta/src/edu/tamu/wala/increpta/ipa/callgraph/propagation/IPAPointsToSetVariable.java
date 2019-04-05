@@ -102,14 +102,15 @@ public class IPAPointsToSetVariable extends IntSetVariable<IPAPointsToSetVariabl
 	}
 
 	@Override
-	public void add(int b) {
+	public boolean add(int b) {
 		if (PARANOID) {
 			MutableSparseIntSet m = MutableSparseIntSet.createMutableSparseIntSet(1);
 			m.add(b);
 			checkTypes(m);
 		}
-		super.add(b);
+		boolean result = super.add(b);
 		cryIfTooBig();
+		return result;
 	}
 
 	@Override

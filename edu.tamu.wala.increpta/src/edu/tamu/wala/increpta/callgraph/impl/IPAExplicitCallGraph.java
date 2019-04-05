@@ -390,6 +390,13 @@ public class IPAExplicitCallGraph extends IPABasicCallGraph<SSAContextInterprete
 	        this.du.clear();
 	    }
 
+		public void updateMethod(IMethod m, IR ir, DefUse du) {
+	    	this.method = m;
+	    	//if changed, may not be able to find it
+	    	this.ir = new WeakReference<IR>(ir);
+	        this.du = new WeakReference<DefUse>(du);
+		}
+
 	  }
 
 	  /*
