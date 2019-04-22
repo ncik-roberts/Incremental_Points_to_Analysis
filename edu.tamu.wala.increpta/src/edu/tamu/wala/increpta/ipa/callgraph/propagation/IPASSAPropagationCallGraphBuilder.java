@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
@@ -2849,8 +2850,8 @@ public abstract class IPASSAPropagationCallGraphBuilder extends IPAPropagationCa
 	}
 
 
-	public void updatePointsToAnalysis(CGNode targetNode, HashSet<SSAInstruction> delInsts,
-			HashSet<SSAInstruction> addInsts) throws CancelException {
+	public void updatePointsToAnalysis(CGNode targetNode, Set<SSAInstruction> delInsts,
+			Set<SSAInstruction> addInsts) throws CancelException {
 		//true -> Indicate we are performing incremental analysis
 	    system.setChange(true);
 	    IR ir = targetNode.getIR();
@@ -2889,7 +2890,7 @@ public abstract class IPASSAPropagationCallGraphBuilder extends IPAPropagationCa
 
 	}
 
-	public void updatePointerAnalaysis(CGNode node, HashMap<SSAInstruction, ISSABasicBlock> deleted,
+	public void updatePointerAnalaysis(CGNode node, Map<SSAInstruction, ISSABasicBlock> deleted,
 			IR ir_old) {
 		DefUse du_old = new DefUse(ir_old);
 		ConstraintVisitor v_old = this.makeVisitor(node);
